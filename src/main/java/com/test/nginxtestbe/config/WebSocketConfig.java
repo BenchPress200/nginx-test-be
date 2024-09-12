@@ -19,6 +19,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Value("${ws}")
     private String wsUrl;
 
+    @Value("${cors.allowedOrigins}")
+    private String allowedOrigins;
+
     @Bean
     public ServletServerContainerFactoryBean createServletServerContainerFactoryBean() {
         ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
@@ -30,6 +33,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(chatController, wsUrl)
-                .setAllowedOriginPatterns("http://localhost:3000");
+                .setAllowedOriginPatterns(allowedOrigins);
     }
 }

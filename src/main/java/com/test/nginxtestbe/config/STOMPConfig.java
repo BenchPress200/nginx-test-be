@@ -19,10 +19,13 @@ public class STOMPConfig implements WebSocketMessageBrokerConfigurer {
     @Value("${stomp.publish}")
     private String publish;
 
+    @Value("${cors.allowedOrigins}")
+    private String allowedOrigins;
+
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint(wsChatConnection).setAllowedOrigins("http://localhost:3000")
+        registry.addEndpoint(wsChatConnection).setAllowedOrigins(allowedOrigins)
                 .withSockJS();
     }
 

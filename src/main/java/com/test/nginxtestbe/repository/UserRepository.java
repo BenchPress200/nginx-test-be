@@ -1,5 +1,6 @@
 package com.test.nginxtestbe.repository;
 
+import com.test.nginxtestbe.dto.ActiveUserResponse;
 import com.test.nginxtestbe.dto.LoginRequest;
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +24,17 @@ public class UserRepository {
         activeUsers.remove(nickname);
     }
 
-    public List<String> findActiveUsers() {
-        return new ArrayList<>(activeUsers.keySet());
+    public List<ActiveUserResponse> findActiveUsers() {
+        List<ActiveUserResponse> users = new ArrayList<>();
+
+        for (String s : activeUsers.keySet()) {
+            users.add(ActiveUserResponse.builder()
+                    .nickname(s)
+                    .roomName(activeUsers.get(s))
+                    .build()
+            );
+        }
+
+        return users;
     }
 }

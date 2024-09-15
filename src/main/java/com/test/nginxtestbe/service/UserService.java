@@ -1,5 +1,6 @@
 package com.test.nginxtestbe.service;
 
+import com.test.nginxtestbe.dto.ActiveUserResponse;
 import com.test.nginxtestbe.dto.LoginRequest;
 import com.test.nginxtestbe.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class UserService {
         userRepository.removeUser(nickname);
     }
 
-    public List<String> findActiveUsers() {
+    public List<ActiveUserResponse> findActiveUsers() {
         return userRepository.findActiveUsers();
     }
 

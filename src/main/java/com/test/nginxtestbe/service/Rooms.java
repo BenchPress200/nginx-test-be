@@ -1,5 +1,6 @@
 package com.test.nginxtestbe.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 @Component
 public class Rooms {
     private final ConcurrentHashMap<String, List<UserSession>> rooms = new ConcurrentHashMap<>();
